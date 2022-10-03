@@ -5,6 +5,7 @@
 	Author: AriusII
 	Language: typescript
 	Path: src\lib\endpoints\authentification.ts
+	IE Require: None
 */
 
 export function getToken(url: string, username: string, password: string) {

@@ -1,19 +1,27 @@
-import { Main } from './lib/main.js'
-export class Client {
-	_main: Main
+import * as Endpoints from './endpoints/endpoints'
+export class Main {
+	_url: string
+	_username: string
+	_password: string
+	_token: Promise<unknown>
 	constructor(url: string, username: string, password: string) {
-		this._main = new Main(url, username, password)
-	}
+		// API documentation: https://docs.freemmorpgmaker.com/en-US/api/v1/
+		this._url = url
+		this._username = username
+		this._password = password
+		this._token = this.initToken()
+		
+		// we want to setInterval to refresh the token every 5 minutes, we use the Auth.refreshToken method
+		setInterval(() => {
+			return this._token = Endpoints.Auth.refreshToken(this._url, this._token)
+		}, 300000)
 
-	/**
-     * 
-     * @param {*} token 
-     */
-	async getPlayersList(options = {}) {
-		return this._main.getPlayersList(options)
 	}
-
-	async getCharFromAcc(options = {}) {
-		return this._main.getCharacterFromAccount(options)
+	
+	async initToken() {
+		return Endpoints.Auth.getToken(this._url, this._username, this._password).then(async (reponse) => {
+			const json = await reponse.json()
+			return json.access_token
+		})
 	}
 }
