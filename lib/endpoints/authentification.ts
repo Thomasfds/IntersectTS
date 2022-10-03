@@ -8,6 +8,13 @@
 	IE Require: None
 */
 
+/**
+ * @documentation https://docs.freemmorpgmaker.com/en-US/api/v1/endpoints/authentication.html#get-token
+ * @param url The https://url:port of the server
+ * @param username The username of the API user
+ * @param password The password of the API user
+ * @returns The token
+ */
 export function getToken(url: string, username: string, password: string) {
 	return fetch(`${url}/api/oauth/token`, {
 		method: 'POST',
