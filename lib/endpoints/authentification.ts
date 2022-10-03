@@ -4,7 +4,7 @@
 	DOCUMENTATION URL: https:docs.freemmorpgmaker.com/en-US/api/v1/endpoints/authentication.html
 	Author: AriusII
 	Language: typescript
-	Path: src\lib\endpoints\authentification.ts
+	Path: lib\endpoints\authentification.ts
 	IE Require: None
 */
 

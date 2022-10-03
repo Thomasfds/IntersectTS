@@ -4,7 +4,8 @@
 	DOCUMENTATION URL: https://docs.freemmorpgmaker.com/en-US/api/v1/endpoints/chat.html
 	Author: AriusII
 	Language: typescript
-	Path: src\lib\endpoints\chat.ts
+	Path: lib\endpoints\chat.ts
+	IE Require: None
 */
 
 export function globalMessage(url: string, token: string, message: string, color?: { a: number, r: number, g: number, b: number }, target?: string) {

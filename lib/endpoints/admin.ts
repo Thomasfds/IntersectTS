@@ -4,7 +4,7 @@
 	DOCUMENTATION URL: https://docs.freemmorpgmaker.com/en-US/api/v1/endpoints/admin.html
 	Author: AriusII
 	Language: typescript
-	Path: src\lib\endpoints\admin.ts
+	Path: lib\endpoints\admin.ts
 	IE Require: Users.Query role
 */
 
@@ -24,7 +24,7 @@ export function banPlayer(url: string, token: string, player: string, duration: 
 	})
 }
 
-export function banUser(url: string, token: string, user: string, duration: BigInteger, reason: string, moderator: string, ip: boolean) {
+export function banUser(url: string, token: string, user: string, duration: number, reason: string, moderator: string, ip: boolean) {
 	return fetch(`${url}/api/v1/users/${user}/admin/ban`, {
 		method: 'POST',
 		headers: {
@@ -80,7 +80,7 @@ export function kickPlayer(url: string, token: string, player: string) {
 	})
 }
 
-export function muteUser(url: string, token: string, user: string, duration: BigInteger, reason: string, moderator: string, ip: boolean) {
+export function muteUser(url: string, token: string, user: string, duration: number, reason: string, moderator: string, ip: boolean) {
 	return fetch(`${url}/api/v1/users/${user}/admin/mute`, {
 		method: 'POST',
 		headers: {
@@ -96,7 +96,7 @@ export function muteUser(url: string, token: string, user: string, duration: Big
 	})
 }
 
-export function mutePlayer(url: string, token: string, player: string, duration: BigInteger, reason: string, moderator: string, ip: boolean) {
+export function mutePlayer(url: string, token: string, player: string, duration: number, reason: string, moderator: string, ip: boolean) {
 	return fetch(`${url}/api/v1/players/${player}/admin/mute`, {
 		method: 'POST',
 		headers: {

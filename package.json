@@ -1,33 +1,32 @@
 {
-	"name": "intersectjs",
-	"version": "1.0.0",
-	"description": "The Intersect Engine API Client Library.",
-	"main": "client.mjs",
-	"type": "module",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "yarn compile && node ./dist/index.js",
-		"compile": "tsc -p ./tsconfig.json"
-
-	},
-	"keywords": [
-		"Intersect",
-		"Engine",
-		"API",
-		"Client",
-		"Library",
-		"JS",
-		"NodeJS"
-	],
-	"author": "AriusII",
-	"license": "ISC",
-	"directories": {
-		"lib": "lib"
-	},
-	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "^5.38.1",
-		"@typescript-eslint/parser": "^5.38.1",
-		"eslint": "^8.24.0",
-		"typescript": "^4.8.2"
-	}
+  "name": "intersectjs",
+  "version": "1.0.0",
+  "description": "The Intersect Engine API Client Library.",
+  "main": "client.mjs",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "yarn compile && node ./dist/index.js",
+    "compile": "tsc -p ./tsconfig.json"
+  },
+  "keywords": [
+    "Intersect",
+    "Engine",
+    "API",
+    "Client",
+    "Library",
+    "JS",
+    "NodeJS"
+  ],
+  "author": "AriusII",
+  "license": "ISC",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "eslint": "^8.24.0",
+    "typescript": "^4.8.4"
+  }
 }

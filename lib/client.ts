@@ -1,11 +1,13 @@
-import * as Endpoints from './endpoints/endpoints'
+import * as Endpoints from './endpoints/allendpoints'
+/**
+* API documentation: https://docs.freemmorpgmaker.com/en-US/api/v1/
+*/
 export class Main {
 	_url: string
 	_username: string
 	_password: string
 	_token: Promise<unknown>
 	constructor(url: string, username: string, password: string) {
-		// API documentation: https://docs.freemmorpgmaker.com/en-US/api/v1/
 		this._url = url
 		this._username = username
 		this._password = password
