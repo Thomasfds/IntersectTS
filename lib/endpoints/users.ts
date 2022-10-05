@@ -8,15 +8,19 @@
     IE Require: users.query API
 */
 export class Users {
-	constructor() {
+	private _url: string
+	private _token: string
+	constructor(_url: string, _token: string) {
+		this._url = _url
+		this._token = _token
 	}
 	
-	usersList(url: string, token: string, page?: number, pageSize?: number, limit?: number) {
-		return fetch(`${url}/api/v1/users`, {
+	usersList(page?: number, pageSize?: number, limit?: number) {
+		return fetch(`${this._url}/api/v1/users`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				page: page,
@@ -26,22 +30,22 @@ export class Users {
 		})
 	}
 
-	userLookup(url: string, token: string, user: string) {
-		return fetch(`${url}/api/v1/users/${user}`, {
+	userLookup(user: string) {
+		return fetch(`${this._url}/api/v1/users/${user}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 
-	userRegister(url: string, token: string, user: string, password: string, email: string) {
-		return fetch(`${url}/api/v1/users/register`, {
+	userRegister(user: string, password: string, email: string) {
+		return fetch(`${this._url}/api/v1/users/register`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				user: user,
@@ -51,12 +55,12 @@ export class Users {
 		})
 	}
 
-	checkPassword(url: string, token: string, user: string, password: string) {
-		return fetch(`${url}/api/v1/users/${user}/password/validate`, {
+	checkPassword(user: string, password: string) {
+		return fetch(`${this._url}/api/v1/users/${user}/password/validate`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				password: password
@@ -64,12 +68,12 @@ export class Users {
 		})
 	}
 
-	changeEmail(url: string, token: string, user: string, password: string, email: string) {
-		return fetch(`${url}/api/v1/users/${user}/email/change`, {
+	changeEmail(user: string, password: string, email: string) {
+		return fetch(`${this._url}/api/v1/users/${user}/email/change`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				new: email,
@@ -78,12 +82,12 @@ export class Users {
 		})
 	}
 
-	changePassword(url: string, token: string, user: string, password: string, newPassword: string) {
-		return fetch(`${url}/api/v1/users/${user}/password/change`, {
+	changePassword(user: string, password: string, newPassword: string) {
+		return fetch(`${this._url}/api/v1/users/${user}/password/change`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				new: newPassword,
@@ -92,49 +96,47 @@ export class Users {
 		})
 	}
 
-	sendEmailResetPassword(url: string, token: string, user: string) {
-		return fetch(`${url}/api/v1/users/${user}/password/reset`, {
+	sendEmailResetPassword(user: string) {
+		return fetch(`${this._url}/api/v1/users/${user}/password/reset`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 
-	getCharacters(url: string, token: string, user: string) {
-		return fetch(`${url}/api/v1/users/${user}/players`, {
+	getCharacters(user: string) {
+		return fetch(`${this._url}/api/v1/users/${user}/players`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 
-	getCharacter(url: string, token: string, user: string, character: string) {
-		return fetch(`${url}/api/v1/users/${user}/players/${character}`, {
+	getCharacter(user: string, character: string) {
+		return fetch(`${this._url}/api/v1/users/${user}/players/${character}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 	/**
 	 * Need the Users.Manage Role
-	 * @param url 
-	 * @param token 
 	 * @param user 
 	 * @param email 
  	 * @returns 
  	*/
-	sudoChangeEmail(url: string, token: string, user: string, email: string) {
-		return fetch(`${url}/api/v1/users/${user}/manage/email/change`, {
+	sudoChangeEmail(user: string, email: string) {
+		return fetch(`${this._url}/api/v1/users/${user}/manage/email/change`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				new: email
@@ -144,18 +146,16 @@ export class Users {
 
 	/**
 	 * Need the Users.Manage Role
-	 * @param url 
-	 * @param token 
 	 * @param user 
 	 * @param password 
 	 * @returns 
 	*/
-	sudoChangePassword(url: string, token: string, user: string, password: string) {
-		return fetch(`${url}/api/v1/users/${user}/manage/password/change`, {
+	sudoChangePassword(user: string, password: string) {
+		return fetch(`${this._url}/api/v1/users/${user}/manage/password/change`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				new: password

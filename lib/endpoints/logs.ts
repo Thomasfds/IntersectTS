@@ -8,35 +8,39 @@
     IE Require: None
 */
 export class Logs {
-	constructor() {
+	private _url: string
+	private _token: string
+	constructor(_url: string, _token: string) {
+		this._url = _url
+		this._token = _token
 	}
 	
-	playerActivity(url: string, token: string, player: string) {
-		return fetch(`${url}/api/v1/logs/player/${player}/activity`, {
+	playerActivity(player: string) {
+		return fetch(`${this._url}/api/v1/logs/player/${player}/activity`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 
-	userActivity(url: string, token: string, user: string) {
-		return fetch(`${url}/api/v1/logs/user/${user}/activity`, {
+	userActivity(user: string) {
+		return fetch(`${this._url}/api/v1/logs/user/${user}/activity`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 
-	userActivityByIP(url: string, token: string, user: string) {
-		return fetch(`${url}/api/v1/logs/user/${user}/ip`, {
+	userActivityByIP(user: string) {
+		return fetch(`${this._url}/api/v1/logs/user/${user}/ip`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}

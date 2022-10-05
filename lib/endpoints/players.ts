@@ -8,15 +8,19 @@
     IE Require: None
 */
 export class Players {
-	constructor() {
+	private _url: string
+	private _token: string
+	constructor(_url: string, _token: string) {
+		this._url = _url
+		this._token = _token
 	}
 	
-	playersList(url: string, token: string, page?: number, pageSize?: number, limit?: number) {
-		return fetch(`${url}/api/v1/players`, {
+	playersList(page?: number, pageSize?: number, limit?: number) {
+		return fetch(`${this._url}/api/v1/players`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				page: page,
@@ -26,12 +30,12 @@ export class Players {
 		})
 	}
 
-	playerRank(url: string, token: string, page?: number, pageSize?: number, limit?: number, sort?: string) {
-		return fetch(`${url}/api/v1/players/rank`, {
+	playerRank(page?: number, pageSize?: number, limit?: number, sort?: string) {
+		return fetch(`${this._url}/api/v1/players/rank`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				page: page,
@@ -42,12 +46,12 @@ export class Players {
 		})
 }
 
-	playersOnline(url: string, token: string, page?: number, count?: number) {
-		return fetch(`${url}/api/v1/players/online`, {
+	playersOnline(page?: number, count?: number) {
+		return fetch(`${this._url}/api/v1/players/online`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				page: page,
@@ -56,62 +60,62 @@ export class Players {
 		})
 	}
 
-	playerOnlineCount(url: string, token: string) {
-		return fetch(`${url}/api/v1/players/online/count`, {
+	playerOnlineCount() {
+		return fetch(`${this._url}/api/v1/players/online/count`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 
-	playerLookup(url: string, token: string, player: string) {
-		return fetch(`${url}/api/v1/players/${player}`, {
+	playerLookup(player: string) {
+		return fetch(`${this._url}/api/v1/players/${player}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 
-	playerVariables(url: string, token: string, player: string) {
-		return fetch(`${url}/api/v1/players/${player}/variables`, {
+	playerVariables(player: string) {
+		return fetch(`${this._url}/api/v1/players/${player}/variables`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 
-	playerVariable(url: string, token: string, player: string, variable: string) {
-		return fetch(`${url}/api/v1/players/${player}/variables/${variable}`, {
+	playerVariable(player: string, variable: string) {
+		return fetch(`${this._url}/api/v1/players/${player}/variables/${variable}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 
-	getPlayerVariableValue(url: string, token: string, player: string, variable: string) {
-		return fetch(`${url}/api/v1/players/${player}/variables/${variable}/value`, {
+	getPlayerVariableValue(player: string, variable: string) {
+		return fetch(`${this._url}/api/v1/players/${player}/variables/${variable}/value`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 
-	setPlayerVariableValue(url: string, token: string, player: string, variable: string, value: string) {
-		return fetch(`${url}/api/v1/players/${player}/variables/${variable}/value`, {
+	setPlayerVariableValue(player: string, variable: string, value: string) {
+		return fetch(`${this._url}/api/v1/players/${player}/variables/${variable}/value`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				value: value
@@ -119,52 +123,52 @@ export class Players {
 		})
 	}
 
-	getPlayerItems(url: string, token: string, player: string) {
-		return fetch(`${url}/api/v1/players/${player}/items`, {
+	getPlayerItems(player: string) {
+		return fetch(`${this._url}/api/v1/players/${player}/items`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 
-	getPlayerInventoryItems(url: string, token: string, player: string) {
-		return fetch(`${url}/api/v1/players/${player}/items/inventory`, {
+	getPlayerInventoryItems(player: string) {
+		return fetch(`${this._url}/api/v1/players/${player}/items/inventory`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 
-	getPlayerBankItems(url: string, token: string, player: string) {
-		return fetch(`${url}/api/v1/players/${player}/items/bank`, {
+	getPlayerBankItems(player: string) {
+		return fetch(`${this._url}/api/v1/players/${player}/items/bank`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 
-	getPlayerBag(url: string, token: string, player: string, bag: string) {
-		return fetch(`${url}/api/v1/players/bag/${bag}`, {
+	getPlayerBag(player: string, bag: string) {
+		return fetch(`${this._url}/api/v1/players/bag/${bag}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 
-	givePlayerItem(url: string, token: string, player: string, item: string, amount: number, bankoverflow?: boolean) {
-		return fetch(`${url}/api/v1/players/${player}/items/give`, {
+	givePlayerItem(player: string, item: string, amount: number, bankoverflow?: boolean) {
+		return fetch(`${this._url}/api/v1/players/${player}/items/give`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				itemid: item,
@@ -174,12 +178,12 @@ export class Players {
 		})
 	}
 
-	takePlayerItem(url: string, token: string, player: string, item: string, amount: number) {
-		return fetch(`${url}/api/v1/players/${player}/items/take`, {
+	takePlayerItem(player: string, item: string, amount: number) {
+		return fetch(`${this._url}/api/v1/players/${player}/items/take`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				itemid: item,
@@ -188,22 +192,22 @@ export class Players {
 		})
 	}
 
-	getPlayerSpells(url: string, token: string, player: string) {
-		return fetch(`${url}/api/v1/players/${player}/spells`, {
+	getPlayerSpells(player: string) {
+		return fetch(`${this._url}/api/v1/players/${player}/spells`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 
-	givePlayerSpell(url: string, token: string, player: string, spell: string) {
-		return fetch(`${url}/api/v1/players/${player}/spells/teach`, {
+	givePlayerSpell(player: string, spell: string) {
+		return fetch(`${this._url}/api/v1/players/${player}/spells/teach`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				spellid: spell
@@ -211,12 +215,12 @@ export class Players {
 		})
 	}
 
-	takePlayerSpell(url: string, token: string, player: string, spell: string) {
-		return fetch(`${url}/api/v1/players/${player}/spells/forget`, {
+	takePlayerSpell(player: string, spell: string) {
+		return fetch(`${this._url}/api/v1/players/${player}/spells/forget`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				spellid: spell

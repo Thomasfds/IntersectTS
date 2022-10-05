@@ -6,24 +6,26 @@
  * @author AriusII
  */
 export class Chat {
-	constructor() {
+	private _url: string
+	private _token: string
+	constructor(_url: string, _token: string) {
+		this._url = _url
+		this._token = _token
 	}
 	
 	/**
 	 * It sends a global message to the server
-	 * @param {string} url - The URL of the server you want to send the message to.
-	 * @param {string} token - The token of the user you want to send the message as.
 	 * @param {string} message - The message you want to send.
 	 * @param [color] - { a: number, r: number, g: number, b: number }
 	 * @param {string} [target] - The target of the message.
 	 * @returns A promise.
 	 */
-	globalMessage(url: string, token: string, message: string, color?: { a: number, r: number, g: number, b: number }, target?: string) {
-		return fetch(`${url}/api/v1/chat/global`, {
+	globalMessage(message: string, color?: { a: number, r: number, g: number, b: number }, target?: string) {
+		return fetch(`${this._url}/api/v1/chat/global`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				message: message,
@@ -35,8 +37,6 @@ export class Chat {
 
 	/**
 	 * It sends a message to all players within a certain radius of the selected map.
-	 * @param {string} url - The URL of the server you're connecting to.
-	 * @param {string} token - The token you got from the login function
 	 * @param {string} mapid - The ID of the map you want to send the message to.
 	 * @param {string} message - The message you want to send.
 	 * @param [color] - { a: number, r: number, g: number, b: number }
@@ -44,12 +44,12 @@ export class Chat {
 	 * sent to all users in the map.
 	 * @returns A promise.
 	 */
-	proximityMessage(url: string, token: string, mapid: string, message: string, color?: { a: number, r: number, g: number, b: number }, target?: string) {
-		return fetch(`${url}/api/v1/chat/proximity/${mapid}`, {
+	proximityMessage(mapid: string, message: string, color?: { a: number, r: number, g: number, b: number }, target?: string) {
+		return fetch(`${this._url}/api/v1/chat/proximity/${mapid}`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				message: message,
@@ -61,20 +61,18 @@ export class Chat {
 
 	/**
 	 * It sends a direct message to a user
-	 * @param {string} url - The URL of the server you want to send the message to.
-	 * @param {string} token - The token of the user you want to send the message as.
 	 * @param {string} user - The user you want to send the message to.
 	 * @param {string} message - The message you want to send.
 	 * @param [color] - { a: number, r: number, g: number, b: number }
 	 * @param {string} [target] - The user you want to send the message to.
 	 * @returns A promise.
 	 */
-	directMessage(url: string, token: string, user: string, message: string, color?: { a: number, r: number, g: number, b: number }, target?: string) {
-		return fetch(`${url}/api/v1/chat/direct/${user}`, {
+	directMessage(user: string, message: string, color?: { a: number, r: number, g: number, b: number }, target?: string) {
+		return fetch(`${this._url}/api/v1/chat/direct/${user}`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				message: message,

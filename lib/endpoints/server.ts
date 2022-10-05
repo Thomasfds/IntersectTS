@@ -8,45 +8,49 @@
     IE Require: None
 */
 export class Server {
-	constructor() {
+	private _url: string
+	private _token: string
+	constructor(_url: string, _token: string) {
+		this._url = _url
+		this._token = _token
 	}
 	
-	getAuthorized(url: string, token: string) {
-		return fetch(`${url}/api/v1/info/authorized`, {
+	getAuthorized() {
+		return fetch(`${this._url}/api/v1/info/authorized`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 
-	getInfo(url: string, token: string) {
-		return fetch(`${url}/api/v1/info`, {
+	getInfo() {
+		return fetch(`${this._url}/api/v1/info`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 
-	getStats(url: string, token: string) {
-		return fetch(`${url}/api/v1/info/stats`, {
+	getStats() {
+		return fetch(`${this._url}/api/v1/info/stats`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
 
-	getConfig(url: string, token: string) {
-		return fetch(`${url}/api/v1/info/config`, {
+	getConfig() {
+		return fetch(`${this._url}/api/v1/info/config`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}

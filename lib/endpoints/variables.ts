@@ -9,15 +9,19 @@
 */
 
 export class Variables {
-	constructor() {
+	private _url: string
+	private _token: string
+	constructor(_url: string, _token: string) {
+		this._url = _url
+		this._token = _token
 	}
 	
-	getVariables(url: string, token: string, page: number, count: number) {
-		return fetch(`${url}/api/v1/variables/global`, {
+	getVariables(page: number, count: number) {
+		return fetch(`${this._url}/api/v1/variables/global`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				page: page,
@@ -26,23 +30,23 @@ export class Variables {
 		})
 	}
 
-	getVariable(url: string, token: string, variableid: string) {
-		return fetch(`${url}/api/v1/variables/global/${variableid}`, {
+	getVariable(variableid: string) {
+		return fetch(`${this._url}/api/v1/variables/global/${variableid}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 
 		})
 	}
 
-	setVariableValue(url: string, token: string, variableid: string, value: number) {
-		return fetch(`${url}/api/v1/variables/global/${variableid}`, {
+	setVariableValue(variableid: string, value: number) {
+		return fetch(`${this._url}/api/v1/variables/global/${variableid}`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
 				value: value
@@ -50,12 +54,12 @@ export class Variables {
 		})
 	}
 
-	getVariableValue(url: string, token: string, variableid: string) {
-		return fetch(`${url}/api/v1/variables/global/${variableid}/value`, {
+	getVariableValue(variableid: string) {
+		return fetch(`${this._url}/api/v1/variables/global/${variableid}/value`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${token}`
+				'Authorization': `Bearer ${this._token}`
 			}
 		})
 	}
