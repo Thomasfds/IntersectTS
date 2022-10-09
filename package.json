@@ -1,29 +1,24 @@
 {
-  "name": "intersectts",
-  "version": "1.0.0",
-  "description": "The Intersect Engine API Client Library based on TS.",
-  "main": "client.js",
-  "type": "module",
-  "scripts": {
-    "build": "tsc --build --clean && tsc --build && node ./dist/test.js"
-  },
-  "keywords": [
-    "Intersect",
-    "Engine",
-    "API",
-    "Client",
-    "Library",
-    "JS",
-    "NodeJS"
-  ],
-  "author": "AriusII",
-  "license": "MIT",
-  "directories": {
-    "lib": "lib"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.39.0",
-    "@typescript-eslint/parser": "^5.39.0",
-    "eslint": "^8.24.0"
-  }
+	"name": "intersectts",
+	"version": "1.0.0",
+	"description": "The Intersect Engine API Client Library based on TS.",
+	"main": "client.js",
+	"type": "module",
+	"scripts": {
+		"build": "tsc --build --clean && tsc --build && node ./dist/test.js"
+	},
+	"keywords": [
+		"Intersect",
+		"Engine",
+		"API",
+		"Client",
+		"Library",
+		"JS",
+		"NodeJS"
+	],
+	"author": "AriusII",
+	"license": "MIT",
+	"directories": {
+		"lib": "lib"
+	}
 }

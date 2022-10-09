@@ -12,11 +12,12 @@ import { Variables } from './endpoints/variables.js'
  * @class Client
  * @description The main class of the API
  * @link API documentation: https://docs.freemmorpgmaker.com/en-US/api/v1/
- * @param {string} url The url of the API
- * @param {string} port The port of the API
- * @param {string} token The token of the user
- * @param {string} refreshToken The refresh token of the user
- * @return {Client} The client
+ * @param {string} url - The url of the API server you're trying to connect to.
+ * @param {number | string} port - The port of the API server.
+ * @param {string} token The token getted from the API server.
+ * @param {string} refreshToken The refresh token getted from the API server.
+ * @return {Client} The Client objets, with all the endpoints.
+ * @example 
  */
 export class Client {
 	private _url: string
@@ -64,6 +65,14 @@ export class Client {
 	}
 }
 
+/**
+ * It takes in a url, port, username, and password and returns a json object containing the access token.
+ * @param {string} url - The url of the API server you're trying to connect to.
+ * @param {number | string} port - The port of the API server.
+ * @param {string} username - The username of the API user.
+ * @param {string} password - The password of the API user.
+ * @returns The JSON token is being returned.
+ */
 export async function initToken(url: string, port: number | string, username: string, password: string) {
 	const res = await fetch(`${url}:${port}/api/oauth/token`, {
 		method: 'POST',
