@@ -1,11 +1,13 @@
 {
-	"name": "intersectts",
+	"name": "@ariusii/intersect.ts",
 	"version": "1.0.0",
 	"description": "The Intersect Engine API Client Library based on TS.",
-	"main": "client.js",
+	"main": "dist/client.js",
+	"types": "dist/client.d.ts",
 	"type": "module",
 	"scripts": {
-		"build": "tsc --build --clean && tsc --build && node ./dist/test.js"
+		"build": "tsc --build --clean && tsc --build",
+		"start": "node index.js"
 	},
 	"keywords": [
 		"Intersect",
