@@ -22,8 +22,8 @@ export class Admin {
 	 * @param {boolean} ip - boolean - Whether or not to ban the player's IP address.
 	 * @returns A promise.
 	 */
-	banPlayer(player: string, duration: number, reason: string, moderator: string, ip: boolean) {
-		return fetch(`${this._url}/api/v1/players/${player}/admin/ban`, {
+	async banPlayer(player: string, duration: number, reason: string, moderator: string, ip: boolean) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/admin/ban`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -36,6 +36,7 @@ export class Admin {
 				ip: ip
 			})
 		})
+		return await res.json()
 	}
 
 	/**
@@ -47,8 +48,8 @@ export class Admin {
 	 * @param {boolean} ip - boolean - Whether or not to ban the user's IP address.
 	 * @returns A promise.
 	 */
-	banUser(user: string, duration: number, reason: string, moderator: string, ip: boolean) {
-		return fetch(`${this._url}/api/v1/users/${user}/admin/ban`, {
+	async banUser(user: string, duration: number, reason: string, moderator: string, ip: boolean) {
+		const res = await fetch(`${this._url}/api/v1/users/${user}/admin/ban`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -61,6 +62,7 @@ export class Admin {
 				ip: ip
 			})
 		})
+		return await res.json()
 	}
 
 	/**
@@ -68,14 +70,15 @@ export class Admin {
 	 * @param {string} user - The user's ID
 	 * @returns The response from the server.
 	 */
-	unbanUser(user: string) {
-		return fetch(`${this._url}/api/v1/users/${user}/admin/unban`, {
+	async unbanUser(user: string) {
+		const res = await fetch(`${this._url}/api/v1/users/${user}/admin/unban`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
 	/**
@@ -83,14 +86,15 @@ export class Admin {
 	 * @param {string} player - The player's username
 	 * @returns A promise.
 	 */
-	unbanPlayer(player: string) {
-		return fetch(`${this._url}/api/v1/players/${player}/admin/unban`, {
+	async unbanPlayer(player: string) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/admin/unban`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
 	/**
@@ -98,14 +102,15 @@ export class Admin {
 	 * @param {string} user - The user's ID
 	 * @returns A promise.
 	 */
-	kickUser(user: string) {
-		return fetch(`${this._url}/api/v1/users/${user}/admin/kick`, {
+	async kickUser(user: string) {
+		const res = await fetch(`${this._url}/api/v1/users/${user}/admin/kick`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
 	/**
@@ -113,14 +118,15 @@ export class Admin {
 	 * @param {string} player - The player's username
 	 * @returns A promise.
 	 */
-	kickPlayer(player: string) {
-		return fetch(`${this._url}/api/v1/players/${player}/admin/kick`, {
+	async kickPlayer(player: string) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/admin/kick`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
 	/**
@@ -132,8 +138,8 @@ export class Admin {
 	 * @param {boolean} ip - boolean - Whether or not to mute the user's IP address.
 	 * @returns The response from the server.
 	 */
-	muteUser(user: string, duration: number, reason: string, moderator: string, ip: boolean) {
-		return fetch(`${this._url}/api/v1/users/${user}/admin/mute`, {
+	async muteUser(user: string, duration: number, reason: string, moderator: string, ip: boolean) {
+		const res = await fetch(`${this._url}/api/v1/users/${user}/admin/mute`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -146,6 +152,7 @@ export class Admin {
 				ip: ip
 			})
 		})
+		return await res.json()
 	}
 
 	/**
@@ -157,8 +164,8 @@ export class Admin {
 	 * @param {boolean} ip - boolean - Whether or not to mute the player's IP address.
 	 * @returns A promise.
 	 */
-	mutePlayer(player: string, duration: number, reason: string, moderator: string, ip: boolean) {
-		return fetch(`${this._url}/api/v1/players/${player}/admin/mute`, {
+	async mutePlayer(player: string, duration: number, reason: string, moderator: string, ip: boolean) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/admin/mute`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -171,6 +178,7 @@ export class Admin {
 				ip: ip
 			})
 		})
+		return await res.json()
 	}
 
 	/**
@@ -178,14 +186,15 @@ export class Admin {
 	 * @param {string} user - The user's ID
 	 * @returns The response from the server.
 	 */
-	unmuteUser(user: string) {
-		return fetch(`${this._url}/api/v1/users/${user}/admin/unmute`, {
+	async unmuteUser(user: string) {
+		const res = await fetch(`${this._url}/api/v1/users/${user}/admin/unmute`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
 	/**
@@ -193,14 +202,15 @@ export class Admin {
 	 * @param {string} player - The player's name
 	 * @returns A promise.
 	 */
-	unmutePlayer(player: string) {
-		return fetch(`${this._url}/api/v1/players/${player}/admin/unmute`, {
+	async unmutePlayer(player: string) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/admin/unmute`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
 	/**
@@ -209,8 +219,8 @@ export class Admin {
 	 * @param {string} mapid - The ID of the map you want to warp to.
 	 * @returns The response from the server.
 	 */
-	playerWarpTo(player: string, mapid: string) {
-		return fetch(`${this._url}/api/v1/players/${player}/admin/warpto`, {
+	async playerWarpTo(player: string, mapid: string) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/admin/warpto`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -220,6 +230,7 @@ export class Admin {
 				mapid: mapid
 			})
 		})
+		return await res.json()
 	}
 
 	/**
@@ -228,8 +239,8 @@ export class Admin {
 	 * @param {string} mapid - The map ID of the map you want to warp to.
 	 * @returns The response from the server.
 	 */
-	userWarpTo(user: string, mapid: string) {
-		return fetch(`${this._url}/api/v1/users/${user}/admin/warpto`, {
+	async userWarpTo(user: string, mapid: string) {
+		const res = await fetch(`${this._url}/api/v1/users/${user}/admin/warpto`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -239,6 +250,7 @@ export class Admin {
 				mapid: mapid
 			})
 		})
+		return await res.json()
 	}
 
 	/**
@@ -249,8 +261,8 @@ export class Admin {
 	 * @param {number} y - number,
 	 * @returns The response from the server.
 	 */
-	userWarpToLoc(user: string, mapid: string, x: number, y: number) {
-		return fetch(`${this._url}/api/v1/users/${user}/admin/warpto`, {
+	async userWarpToLoc(user: string, mapid: string, x: number, y: number) {
+		const res = await fetch(`${this._url}/api/v1/users/${user}/admin/warpto`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -262,6 +274,7 @@ export class Admin {
 				y: y
 			})
 		})
+		return await res.json()
 	}
 
 	/**
@@ -272,8 +285,8 @@ export class Admin {
 	 * @param {number} y - number,
 	 * @returns The response from the server.
 	 */
-	playerWarpToLoc(player: string, mapid: string, x: number, y: number) {
-		return fetch(`${this._url}/api/v1/players/${player}/admin/warpto`, {
+	async playerWarpToLoc(player: string, mapid: string, x: number, y: number) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/admin/warpto`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -285,6 +298,7 @@ export class Admin {
 				y: y
 			})
 		})
+		return await res.json()
 	}
 
 	/**
@@ -292,14 +306,15 @@ export class Admin {
 	 * @param {string} user - The username of the user you want to kill.
 	 * @returns The response from the server.
 	 */
-	killUser(user: string) {
-		return fetch(`${this._url}/api/v1/users/${user}/admin/kill`, {
+	async killUser(user: string) {
+		const res = await fetch(`${this._url}/api/v1/users/${user}/admin/kill`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
 	/**
@@ -307,13 +322,14 @@ export class Admin {
 	 * @param {string} player - The player's username
 	 * @returns The response from the server.
 	 */
-	killPlayer(player: string) {
-		return fetch(`${this._url}/api/v1/players/${player}/admin/kill`, {
+	async killPlayer(player: string) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/admin/kill`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 }

@@ -24,8 +24,8 @@ export class GameObjects {
 	 * @param {number} count - number of items to return
 	 * @returns A promise.
 	 */
-	getList(type: string, page: number, count: number) {
-		return fetch(`${this._url}/api/v1/gameobjects/${type}`, {
+	async getList(type: string, page: number, count: number) {
+		const res = await fetch(`${this._url}/api/v1/gameobjects/${type}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -36,6 +36,7 @@ export class GameObjects {
 				count: count
 			})
 		})
+		return await res.json()
 	}
 
 	/**
@@ -45,27 +46,29 @@ export class GameObjects {
 	 * @param {string} id - the id of the object you want to get
 	 * @returns A Promise.
 	 */
-	getObject(type: string, id: string) {
-		return fetch(`${this._url}/api/v1/gameobjects/${type}/${id}`, {
+	async getObject(type: string, id: string) {
+		const res = await fetch(`${this._url}/api/v1/gameobjects/${type}/${id}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
 	/**
 	 * It takes a url and a token, and returns a fetch request to the url with the token in the header.
 	 * @returns A promise.
 	 */
-	getTime() {
-		return fetch(`${this._url}/api/v1/gameobjects/time`, {
+	async getTime() {
+		const res = await fetch(`${this._url}/api/v1/gameobjects/time`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 }

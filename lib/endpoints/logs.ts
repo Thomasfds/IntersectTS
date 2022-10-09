@@ -15,33 +15,36 @@ export class Logs {
 		this._token = _token
 	}
 	
-	playerActivity(player: string) {
-		return fetch(`${this._url}/api/v1/logs/player/${player}/activity`, {
+	async playerActivity(player: string) {
+		const res = await fetch(`${this._url}/api/v1/logs/player/${player}/activity`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
-	userActivity(user: string) {
-		return fetch(`${this._url}/api/v1/logs/user/${user}/activity`, {
+	async userActivity(user: string) {
+		const res = await fetch(`${this._url}/api/v1/logs/user/${user}/activity`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
-	userActivityByIP(user: string) {
-		return fetch(`${this._url}/api/v1/logs/user/${user}/ip`, {
+	async userActivityByIP(user: string) {
+		const res = await fetch(`${this._url}/api/v1/logs/user/${user}/ip`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 }

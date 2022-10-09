@@ -15,43 +15,47 @@ export class Server {
 		this._token = _token
 	}
 	
-	getAuthorized() {
-		return fetch(`${this._url}/api/v1/info/authorized`, {
+	async getAuthorized() {
+		const res = await fetch(`${this._url}/api/v1/info/authorized`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
-	getInfo() {
-		return fetch(`${this._url}/api/v1/info`, {
+	async getInfo() {
+		const res = await fetch(`${this._url}/api/v1/info`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
-	getStats() {
-		return fetch(`${this._url}/api/v1/info/stats`, {
+	async getStats() {
+		const res = await fetch(`${this._url}/api/v1/info/stats`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
-	getConfig() {
-		return fetch(`${this._url}/api/v1/info/config`, {
+	async getConfig() {
+		const res = await fetch(`${this._url}/api/v1/info/config`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 }

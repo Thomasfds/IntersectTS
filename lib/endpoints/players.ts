@@ -15,8 +15,8 @@ export class Players {
 		this._token = _token
 	}
 	
-	playersList(page?: number, pageSize?: number, limit?: number) {
-		return fetch(`${this._url}/api/v1/players`, {
+	async playersList(page?: number, pageSize?: number, limit?: number) {
+		const res = await fetch(`${this._url}/api/v1/players`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -28,10 +28,11 @@ export class Players {
 				limit: limit
 			})
 		})
+		return await res.json()
 	}
 
-	playerRank(page?: number, pageSize?: number, limit?: number, sort?: string) {
-		return fetch(`${this._url}/api/v1/players/rank`, {
+	async playerRank(page?: number, pageSize?: number, limit?: number, sort?: string) {
+		const res = await fetch(`${this._url}/api/v1/players/rank`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -44,10 +45,11 @@ export class Players {
 				sort: sort
 			})
 		})
+		return await res.json()
 }
 
-	playersOnline(page?: number, count?: number) {
-		return fetch(`${this._url}/api/v1/players/online`, {
+	async playersOnline(page?: number, count?: number) {
+		const res = await fetch(`${this._url}/api/v1/players/online`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -58,60 +60,66 @@ export class Players {
 				count: count
 			})
 		})
+		return await res.json()
 	}
 
-	playerOnlineCount() {
-		return fetch(`${this._url}/api/v1/players/online/count`, {
+	async playerOnlineCount() {
+		const res = await fetch(`${this._url}/api/v1/players/online/count`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
-	playerLookup(player: string) {
-		return fetch(`${this._url}/api/v1/players/${player}`, {
+	async playerLookup(player: string) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
-	playerVariables(player: string) {
-		return fetch(`${this._url}/api/v1/players/${player}/variables`, {
+	async playerVariables(player: string) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/variables`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
-	playerVariable(player: string, variable: string) {
-		return fetch(`${this._url}/api/v1/players/${player}/variables/${variable}`, {
+	async playerVariable(player: string, variable: string) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/variables/${variable}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
-	getPlayerVariableValue(player: string, variable: string) {
-		return fetch(`${this._url}/api/v1/players/${player}/variables/${variable}/value`, {
+	async getPlayerVariableValue(player: string, variable: string) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/variables/${variable}/value`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
-	setPlayerVariableValue(player: string, variable: string, value: string) {
-		return fetch(`${this._url}/api/v1/players/${player}/variables/${variable}/value`, {
+	async setPlayerVariableValue(player: string, variable: string, value: string) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/variables/${variable}/value`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
@@ -121,50 +129,55 @@ export class Players {
 				value: value
 			})
 		})
+		return await res.json()
 	}
 
-	getPlayerItems(player: string) {
-		return fetch(`${this._url}/api/v1/players/${player}/items`, {
+	async getPlayerItems(player: string) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/items`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
-	getPlayerInventoryItems(player: string) {
-		return fetch(`${this._url}/api/v1/players/${player}/items/inventory`, {
+	async getPlayerInventoryItems(player: string) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/items/inventory`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
-	getPlayerBankItems(player: string) {
-		return fetch(`${this._url}/api/v1/players/${player}/items/bank`, {
+	async getPlayerBankItems(player: string) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/items/bank`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
-	getPlayerBag(player: string, bag: string) {
-		return fetch(`${this._url}/api/v1/players/bag/${bag}`, {
+	async getPlayerBag(player: string, bag: string) {
+		const res = await fetch(`${this._url}/api/v1/players/bag/${bag}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
-	givePlayerItem(player: string, item: string, amount: number, bankoverflow?: boolean) {
-		return fetch(`${this._url}/api/v1/players/${player}/items/give`, {
+	async givePlayerItem(player: string, item: string, amount: number, bankoverflow?: boolean) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/items/give`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -176,10 +189,11 @@ export class Players {
 				bankoverflow: bankoverflow
 			})
 		})
+		return await res.json()
 	}
 
-	takePlayerItem(player: string, item: string, amount: number) {
-		return fetch(`${this._url}/api/v1/players/${player}/items/take`, {
+	async takePlayerItem(player: string, item: string, amount: number) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/items/take`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -190,20 +204,22 @@ export class Players {
 				quantity: amount
 			})
 		})
+		return await res.json()
 	}
 
-	getPlayerSpells(player: string) {
-		return fetch(`${this._url}/api/v1/players/${player}/spells`, {
+	async getPlayerSpells(player: string) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/spells`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
-	givePlayerSpell(player: string, spell: string) {
-		return fetch(`${this._url}/api/v1/players/${player}/spells/teach`, {
+	async givePlayerSpell(player: string, spell: string) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/spells/teach`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -213,10 +229,11 @@ export class Players {
 				spellid: spell
 			})
 		})
+		return await res.json()
 	}
 
-	takePlayerSpell(player: string, spell: string) {
-		return fetch(`${this._url}/api/v1/players/${player}/spells/forget`, {
+	async takePlayerSpell(player: string, spell: string) {
+		const res = await fetch(`${this._url}/api/v1/players/${player}/spells/forget`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -226,5 +243,6 @@ export class Players {
 				spellid: spell
 			})
 		})
+		return await res.json()
 	}
 }

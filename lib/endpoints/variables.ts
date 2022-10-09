@@ -16,8 +16,8 @@ export class Variables {
 		this._token = _token
 	}
 	
-	getVariables(page: number, count: number) {
-		return fetch(`${this._url}/api/v1/variables/global`, {
+	async getVariables(page: number, count: number) {
+		const response = await fetch(`${this._url}/api/v1/variables/global`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -28,21 +28,22 @@ export class Variables {
 				count: count
 			})
 		})
+		return await response.json()
 	}
 
-	getVariable(variableid: string) {
-		return fetch(`${this._url}/api/v1/variables/global/${variableid}`, {
+	async getVariable(variableid: string) {
+		const res = await fetch(`${this._url}/api/v1/variables/global/${variableid}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			},
-
 		})
+		return await res.json()
 	}
 
-	setVariableValue(variableid: string, value: number) {
-		return fetch(`${this._url}/api/v1/variables/global/${variableid}`, {
+	async setVariableValue(variableid: string, value: number) {
+		const res = await fetch(`${this._url}/api/v1/variables/global/${variableid}`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -52,15 +53,17 @@ export class Variables {
 				value: value
 			})
 		})
+		return await res.json()
 	}
 
-	getVariableValue(variableid: string) {
-		return fetch(`${this._url}/api/v1/variables/global/${variableid}/value`, {
+	async getVariableValue(variableid: string) {
+		const res = await fetch(`${this._url}/api/v1/variables/global/${variableid}/value`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 }

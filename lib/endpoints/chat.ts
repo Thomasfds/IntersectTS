@@ -20,8 +20,8 @@ export class Chat {
 	 * @param {string} [target] - The target of the message.
 	 * @returns A promise.
 	 */
-	globalMessage(message: string, color?: { a: number, r: number, g: number, b: number }, target?: string) {
-		return fetch(`${this._url}/api/v1/chat/global`, {
+	async globalMessage(message: string, color?: { a: number, r: number, g: number, b: number }, target?: string) {
+		const res = await fetch(`${this._url}/api/v1/chat/global`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -33,6 +33,7 @@ export class Chat {
 				target: target
 			})
 		})
+		return await res.json()
 	}
 
 	/**
@@ -44,8 +45,8 @@ export class Chat {
 	 * sent to all users in the map.
 	 * @returns A promise.
 	 */
-	proximityMessage(mapid: string, message: string, color?: { a: number, r: number, g: number, b: number }, target?: string) {
-		return fetch(`${this._url}/api/v1/chat/proximity/${mapid}`, {
+	async proximityMessage(mapid: string, message: string, color?: { a: number, r: number, g: number, b: number }, target?: string) {
+		const res = await fetch(`${this._url}/api/v1/chat/proximity/${mapid}`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -57,6 +58,7 @@ export class Chat {
 				target: target
 			})
 		})
+		return await res.json()
 	}
 
 	/**
@@ -67,8 +69,8 @@ export class Chat {
 	 * @param {string} [target] - The user you want to send the message to.
 	 * @returns A promise.
 	 */
-	directMessage(user: string, message: string, color?: { a: number, r: number, g: number, b: number }, target?: string) {
-		return fetch(`${this._url}/api/v1/chat/direct/${user}`, {
+	async directMessage(user: string, message: string, color?: { a: number, r: number, g: number, b: number }, target?: string) {
+		const res = await fetch(`${this._url}/api/v1/chat/direct/${user}`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -80,5 +82,6 @@ export class Chat {
 				target: target
 			})
 		})
+		return await res.json()
 	}
 }
