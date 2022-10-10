@@ -45,7 +45,8 @@ IntersectTS is a Intersect Engine package built on top of [`Intersect Engine API
     /* password : Need to be passed as a SHA256 of the password */
 
     const client = new IntersectAPI.Client(url, port, token.access_token, token.refresh_token);
-    /* You can add a fifth parameter to the constructor to set the refresh interval in milliseconds. Default is 840000 ms */
+    /* You can add a fifth parameter to the constructor to set the refresh interval in milliseconds.
+    Default is 840000 ms */
 ```
 ---
 
@@ -53,7 +54,7 @@ IntersectTS is a Intersect Engine package built on top of [`Intersect Engine API
 
 Before creating an issue, please ensure that it hasn't already been reported/suggested, and double-check the documentation.
 
-See the contribution guide if you'd like to submit a PR.
+If you'd like, feel free to submit a PR.
 
 
 ## Help
