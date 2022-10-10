@@ -27,15 +27,10 @@ IntersectTS is a Intersect Engine package built on top of [https://docs.freemmor
 
 ## Installation
 
-`@ariusii/intersect.ts` doesn't require any dependencies. You can install it using your favorite package manager:
+[`@ariusii/intersect.ts`](https://www.npmjs.com/package/@ariusii/intersect.ts) doesn't require any dependencies.
 
 ```bash
-
--   [`intersect.ts`](https://www.npmjs.com/package/@ariusii/intersect.ts)
-
-You can use the following command to install this package.
-
-> npm install @ariusii/intersect.ts
+    npm install @ariusii/intersect.ts
 ```
 
 ---
