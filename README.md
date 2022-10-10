@@ -41,7 +41,7 @@ You can use the following command to install this package.
 ---
 
 ## Example usage
-    ```ts
+```js
     import { * } as IntersectAPI from '@ariusii/intersect.ts';
     const url = "http://myserver.com";
     const port = 5400;
@@ -51,7 +51,7 @@ You can use the following command to install this package.
 
     const client = new IntersectAPI.Client(url, port, token.access_token, token.refresh_token);
     /* You can add a fifth parameter to the constructor to set the refresh interval in milliseconds. Default is 840000 ms */
-    ```
+```
 ---
 
 ## Contributing
