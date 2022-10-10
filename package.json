@@ -1,6 +1,6 @@
 {
 	"name": "@ariusii/intersect.ts",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "The Intersect Engine API Client Library based on TS.",
 	"main": "dist/client.js",
 	"types": "dist/client.d.ts",
@@ -16,7 +16,8 @@
 		"Client",
 		"Library",
 		"JS",
-		"NodeJS"
+		"NodeJS",
+		"TS"
 	],
 	"author": "AriusII",
 	"license": "MIT",

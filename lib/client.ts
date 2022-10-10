@@ -23,15 +23,15 @@ export class Client {
 	private _url: string
 	private _token: string
 	private _refreshToken: string
-	Admin: Admin
-	Auth: Authentification
-	Chat: Chat
-	GameObjects: GameObjects
-	Logs: Logs
-	Players: Players
-	Server: Server
-	Users: Users
-	Variables: Variables
+	public	Admin: Admin
+	public	Auth: Authentification
+	public	Chat: Chat
+	public	GameObjects: GameObjects
+	public	Logs: Logs
+	public	Players: Players
+	public	Server: Server
+	public	Users: Users
+	public	Variables: Variables
 
 	constructor(url: string, port: number | string, token: string, refreshToken: string, tokenCooldown?: number) {
 		this._url = `${url}:${port}`

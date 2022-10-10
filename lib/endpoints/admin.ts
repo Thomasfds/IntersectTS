@@ -15,14 +15,14 @@ export class Admin {
 	
 	/**
 	 * It bans a player from the server
-	 * @param {string} player - The player's name
+	 * @param {string} player - The player's name.
 	 * @param {number} duration - The duration of the ban in seconds.
-	 * @param {string} reason - The reason for the ban
+	 * @param {string} reason - The reason for the ban.
 	 * @param {string} moderator - The name of the moderator who banned the player.
 	 * @param {boolean} ip - boolean - Whether or not to ban the player's IP address.
-	 * @returns A promise.
+	 * @returns The response from the server.
 	 */
-	async banPlayer(player: string, duration: number, reason: string, moderator: string, ip: boolean) {
+	async banPlayer(player: string, duration: number, reason: string, moderator: string, ip?: boolean) {
 		const res = await fetch(`${this._url}/api/v1/players/${player}/admin/ban`, {
 			method: 'POST',
 			headers: {
@@ -33,7 +33,7 @@ export class Admin {
 				duration: duration,
 				reason: reason,
 				moderator: moderator,
-				ip: ip
+				ip: ip ? ip : false
 			})
 		})
 		return await res.json()
@@ -41,14 +41,14 @@ export class Admin {
 
 	/**
 	 * It bans a user from the server
-	 * @param {string} user - The user's ID
+	 * @param {string} user - The user's name.
 	 * @param {number} duration - The duration of the ban in seconds.
-	 * @param {string} reason - The reason for the ban
+	 * @param {string} reason - The reason for the ban.
 	 * @param {string} moderator - The moderator who banned the user.
 	 * @param {boolean} ip - boolean - Whether or not to ban the user's IP address.
-	 * @returns A promise.
+	 * @returns The response from the server.
 	 */
-	async banUser(user: string, duration: number, reason: string, moderator: string, ip: boolean) {
+	async banUser(user: string, duration: number, reason: string, moderator: string, ip?: boolean) {
 		const res = await fetch(`${this._url}/api/v1/users/${user}/admin/ban`, {
 			method: 'POST',
 			headers: {
@@ -59,7 +59,7 @@ export class Admin {
 				duration: duration,
 				reason: reason,
 				moderator: moderator,
-				ip: ip
+				ip: ip ? ip : false
 			})
 		})
 		return await res.json()
@@ -67,7 +67,7 @@ export class Admin {
 
 	/**
 	 * It unban's a user
-	 * @param {string} user - The user's ID
+	 * @param {string} user - The user's name.
 	 * @returns The response from the server.
 	 */
 	async unbanUser(user: string) {
@@ -83,8 +83,8 @@ export class Admin {
 
 	/**
 	 * It unban's a player
-	 * @param {string} player - The player's username
-	 * @returns A promise.
+	 * @param {string} player - The player's name.
+	 * @returns The response from the server.
 	 */
 	async unbanPlayer(player: string) {
 		const res = await fetch(`${this._url}/api/v1/players/${player}/admin/unban`, {
@@ -99,8 +99,8 @@ export class Admin {
 
 	/**
 	 * It kicks a user from the server
-	 * @param {string} user - The user's ID
-	 * @returns A promise.
+	 * @param {string} user - The user's name.
+	 * @returns The response from the server.
 	 */
 	async kickUser(user: string) {
 		const res = await fetch(`${this._url}/api/v1/users/${user}/admin/kick`, {
@@ -115,8 +115,8 @@ export class Admin {
 
 	/**
 	 * It kicks a player from the server
-	 * @param {string} player - The player's username
-	 * @returns A promise.
+	 * @param {string} player - The player's name.
+	 * @returns The response from the server.
 	 */
 	async kickPlayer(player: string) {
 		const res = await fetch(`${this._url}/api/v1/players/${player}/admin/kick`, {
@@ -131,14 +131,14 @@ export class Admin {
 
 	/**
 	 * It mutes a user
-	 * @param {string} user - The user's ID
+	 * @param {string} user - The user's name.
 	 * @param {number} duration - The duration of the mute in seconds.
-	 * @param {string} reason - The reason for the mute
+	 * @param {string} reason - The reason for the mute.
 	 * @param {string} moderator - The moderator who is muting the user.
 	 * @param {boolean} ip - boolean - Whether or not to mute the user's IP address.
 	 * @returns The response from the server.
 	 */
-	async muteUser(user: string, duration: number, reason: string, moderator: string, ip: boolean) {
+	async muteUser(user: string, duration: number, reason: string, moderator: string, ip?: boolean) {
 		const res = await fetch(`${this._url}/api/v1/users/${user}/admin/mute`, {
 			method: 'POST',
 			headers: {
@@ -149,7 +149,7 @@ export class Admin {
 				duration: duration,
 				reason: reason,
 				moderator: moderator,
-				ip: ip
+				ip: ip ? ip : false
 			})
 		})
 		return await res.json()
@@ -157,14 +157,14 @@ export class Admin {
 
 	/**
 	 * It mutes a player
-	 * @param {string} player - The player's name
+	 * @param {string} player - The player's name.
 	 * @param {number} duration - The duration of the mute in seconds.
-	 * @param {string} reason - The reason for the mute
+	 * @param {string} reason - The reason for the mute.
 	 * @param {string} moderator - The name of the moderator who is muting the player.
 	 * @param {boolean} ip - boolean - Whether or not to mute the player's IP address.
-	 * @returns A promise.
+	 * @returns The response from the server.
 	 */
-	async mutePlayer(player: string, duration: number, reason: string, moderator: string, ip: boolean) {
+	async mutePlayer(player: string, duration: number, reason: string, moderator: string, ip?: boolean) {
 		const res = await fetch(`${this._url}/api/v1/players/${player}/admin/mute`, {
 			method: 'POST',
 			headers: {
@@ -175,7 +175,7 @@ export class Admin {
 				duration: duration,
 				reason: reason,
 				moderator: moderator,
-				ip: ip
+				ip: ip ? ip : false
 			})
 		})
 		return await res.json()
@@ -183,7 +183,7 @@ export class Admin {
 
 	/**
 	 * It unmutes a user
-	 * @param {string} user - The user's ID
+	 * @param {string} user - The user's name.
 	 * @returns The response from the server.
 	 */
 	async unmuteUser(user: string) {
@@ -199,8 +199,8 @@ export class Admin {
 
 	/**
 	 * It unmutes a player
-	 * @param {string} player - The player's name
-	 * @returns A promise.
+	 * @param {string} player - The player's name.
+	 * @returns The response from the server.
 	 */
 	async unmutePlayer(player: string) {
 		const res = await fetch(`${this._url}/api/v1/players/${player}/admin/unmute`, {
@@ -214,8 +214,8 @@ export class Admin {
 	}
 
 	/**
-	 * It warps a player user to a location
-	 * @param {string} player - The player's name
+	 * It warps a player user to a map location
+	 * @param {string} player - The player's name.
 	 * @param {string} mapid - The ID of the map you want to warp to.
 	 * @returns The response from the server.
 	 */
@@ -234,8 +234,8 @@ export class Admin {
 	}
 
 	/**
-	 * It warps a user to a map
-	 * @param {string} user - The user's username
+	 * It warps a user to a map location
+	 * @param {string} user - The user's name.
 	 * @param {string} mapid - The map ID of the map you want to warp to.
 	 * @returns The response from the server.
 	 */
@@ -255,10 +255,10 @@ export class Admin {
 
 	/**
 	 * It warps a user to a location on a map
-	 * @param {string} user - The user you want to warp.
+	 * @param {string} user - The user's name you want to warp.
 	 * @param {string} mapid - The map ID of the map you want to warp to.
 	 * @param {number} x - The x coordinate of the location you want to warp to.
-	 * @param {number} y - number,
+	 * @param {number} y - The y coordinate of the location you want to warp to.
 	 * @returns The response from the server.
 	 */
 	async userWarpToLoc(user: string, mapid: string, x: number, y: number) {
@@ -279,10 +279,10 @@ export class Admin {
 
 	/**
 	 * It sends a POST request to the server with the player's ID, the map ID, and the X and Y coordinates
-	 * @param {string} player - The player's name
-	 * @param {string} mapid - The map ID of the map you want to warp to.
-	 * @param {number} x - number, y: number
-	 * @param {number} y - number,
+	 * @param {string} player - The player's name you want to warp.
+	 * @param {string} mapid - The ID of the map you want to warp to.
+	 * @param {number} x - The x coordinate of the location you want to warp to.
+	 * @param {number} y - The y coordinate of the location you want to warp to.
 	 * @returns The response from the server.
 	 */
 	async playerWarpToLoc(player: string, mapid: string, x: number, y: number) {
@@ -303,7 +303,7 @@ export class Admin {
 
 	/**
 	 * It kill a player by their ID
-	 * @param {string} user - The username of the user you want to kill.
+	 * @param {string} user - The users's name you want to kill.
 	 * @returns The response from the server.
 	 */
 	async killUser(user: string) {
@@ -319,7 +319,7 @@ export class Admin {
 
 	/**
 	 * It kills a player by their name
-	 * @param {string} player - The player's username
+	 * @param {string} player - The player's name you want to kill.
 	 * @returns The response from the server.
 	 */
 	async killPlayer(player: string) {

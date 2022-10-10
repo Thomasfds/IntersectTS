@@ -16,8 +16,9 @@ export class Authentification {
 	}
 
 	/**
+	 * /!\ CAUTION /!\ This method can delete your CURRENT TOKEN KEY, so be careful, or you will not be able to use the API anymore.
 	 * It takes a url and a token, and returns a fetch request to the url with the token in the body.
-	 * @returns A promise.
+	 * @returns The response from the server.
 	 */
 	async refreshToken() {
 		const res = await fetch(`${this._url}/api/oauth/token`, {
@@ -35,10 +36,9 @@ export class Authentification {
 	}
 
 	/**
-	 * It takes a url, a token, and a user, and returns a fetch request that deletes the token from the
-	 * database.
-	 * @param {string} user - The user's username
-	 * @returns A promise.
+	 * It deletes a token from a specific user.
+	 * @param {string} user - The user you want to delete the token for.
+	 * @returns The response from the server.
 	 */
 	async deleteToken(user: string) {
 		const res = await fetch(`${this._url}/api/oauth/token/${user}`, {
@@ -52,12 +52,12 @@ export class Authentification {
 	}
 
 	/**
-	 * It takes a url, a token, and a user, and then it deletes the token from the database.
-	 * @param {string} user - the user's username
+	 * It deletes the token information from the specified token id, from a specific user.
+	 * @param {string} user - The user you want to delete the token for.
 	 * @returns The response from the server.
 	 */
 	async deleteTokenById(user: string) {
-		const res = await fetch(`${this._url}/api/oauth/token/${user}/${this._token}`, {
+		const res = await fetch(`${this._url}/api/oauth/token/${user}/${this._refreshToken}`, {
 			method: 'DELETE',
 			headers: {
 				'Content-Type': 'application/json',
