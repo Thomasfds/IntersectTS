@@ -1,12 +1,9 @@
 <div align="center">
 
 # IntersectJS
-
 **A pleasant Intersect Engine API Client**
 
 </div>
-
----
 
 ## Description
 
@@ -14,7 +11,7 @@ IntersectTS is a Intersect Engine package built on top of [https://docs.freemmor
 
 <div align="center" style="padding-top: 2rem; padding-bottom: 1rem">
 
-| [**Click here for the documentation and guides**](TODO) |
+| [**Click here for the documentation and guides(todo)**](TODO) |
 | ------------------------------------------------------------------------------ |
 
 </div>
@@ -38,15 +35,13 @@ IntersectTS is a Intersect Engine package built on top of [https://docs.freemmor
 
 You can use the following command to install this package.
 
-```sh
-npm install @ariusii/intersect.ts
+> npm install @ariusii/intersect.ts
 ```
 
 ---
 
 ## Example usage
     
-    ```ts
     import { * } as IntersectAPI from '@ariusii/intersect.ts';
     const url = "http://myserver.com";
     const port = 5400;
@@ -56,13 +51,15 @@ npm install @ariusii/intersect.ts
 
     const client = new IntersectAPI.Client(url, port, token.access_token, token.refresh_token);
     /* You can add a fifth parameter to the constructor to set the refresh interval in milliseconds. Default is 840000 ms */
-    ```
+
+---
 
 ## Contributing
 
 Before creating an issue, please ensure that it hasn't already been reported/suggested, and double-check the documentation.
 
 See the contribution guide if you'd like to submit a PR.
+
 
 ## Help
 
