@@ -58,4 +58,4 @@ See the contribution guide if you'd like to submit a PR.
 
 ## Help
 
-If you don't understand something in the documentation, you are experiencing problems, or you just need a gentle nudge in the right direction, please don't hesitate to join the official [https://www.ascensiongamedev.com/] forum.
+If you don't understand something in the documentation, you are experiencing problems, or you just need a gentle nudge in the right direction, please don't hesitate to join the official [`forum`](https://www.ascensiongamedev.com/).
