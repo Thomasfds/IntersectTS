@@ -7,7 +7,7 @@
 
 ## Description
 
-IntersectTS is a Intersect Engine package built on top of [https://docs.freemmorpgmaker.com/en-US/api/v1/] to render more easily the API usage.
+IntersectTS is a Intersect Engine package built on top of [`Intersect Engine`](https://docs.freemmorpgmaker.com/en-US/api/v1/) to render more easily the API usage.
 
 <div align="center" style="padding-top: 2rem; padding-bottom: 1rem">
 
