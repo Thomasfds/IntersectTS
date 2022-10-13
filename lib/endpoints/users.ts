@@ -14,17 +14,12 @@ export class Users {
 	}
 	
 	async usersList(page: number, pageSize: number, limit: number) {
-		const res = await fetch(`${this._url}/api/v1/users`, {
+		const res = await fetch(`${this._url}/api/v1/users?page=${page || 0}&pageSize=${pageSize || 10}&limit=${limit || (pageSize || 10)}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
-			},
-			body: JSON.stringify({
-				page: page || 0,
-				pageSize: pageSize || 10,
-				limit: limit || (pageSize || 10)
-			})
+			}
 		})
 		return await res.json()
 	}
