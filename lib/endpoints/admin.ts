@@ -19,10 +19,10 @@ export class Admin {
 	 * @param {number} duration - The duration of the ban in seconds.
 	 * @param {string} reason - The reason for the ban.
 	 * @param {string} moderator - The name of the moderator who banned the player.
-	 * @param {boolean} ip - boolean - Whether or not to ban the player's IP address.
+	 * @param {boolean} ip - boolean - (Optional) Whether or not to ban the player's IP address.
 	 * @returns The response from the server.
 	 */
-	async banPlayer(player: string, duration: number, reason: string, moderator: string, ip?: boolean) {
+	async banPlayer(player: string, duration: number, reason: string, moderator: string, ip: boolean) {
 		const res = await fetch(`${this._url}/api/v1/players/${player}/admin/ban`, {
 			method: 'POST',
 			headers: {
@@ -45,10 +45,10 @@ export class Admin {
 	 * @param {number} duration - The duration of the ban in seconds.
 	 * @param {string} reason - The reason for the ban.
 	 * @param {string} moderator - The moderator who banned the user.
-	 * @param {boolean} ip - boolean - Whether or not to ban the user's IP address.
+	 * @param {boolean} ip - boolean - (Optional) Whether or not to ban the user's IP address.
 	 * @returns The response from the server.
 	 */
-	async banUser(user: string, duration: number, reason: string, moderator: string, ip?: boolean) {
+	async banUser(user: string, duration: number, reason: string, moderator: string, ip: boolean) {
 		const res = await fetch(`${this._url}/api/v1/users/${user}/admin/ban`, {
 			method: 'POST',
 			headers: {
@@ -135,10 +135,10 @@ export class Admin {
 	 * @param {number} duration - The duration of the mute in seconds.
 	 * @param {string} reason - The reason for the mute.
 	 * @param {string} moderator - The moderator who is muting the user.
-	 * @param {boolean} ip - boolean - Whether or not to mute the user's IP address.
+	 * @param {boolean} ip - boolean - (Optional) Whether or not to mute the user's IP address.
 	 * @returns The response from the server.
 	 */
-	async muteUser(user: string, duration: number, reason: string, moderator: string, ip?: boolean) {
+	async muteUser(user: string, duration: number, reason: string, moderator: string, ip: boolean) {
 		const res = await fetch(`${this._url}/api/v1/users/${user}/admin/mute`, {
 			method: 'POST',
 			headers: {
@@ -161,10 +161,10 @@ export class Admin {
 	 * @param {number} duration - The duration of the mute in seconds.
 	 * @param {string} reason - The reason for the mute.
 	 * @param {string} moderator - The name of the moderator who is muting the player.
-	 * @param {boolean} ip - boolean - Whether or not to mute the player's IP address.
+	 * @param {boolean} ip - boolean - (Optional) Whether or not to mute the player's IP address.
 	 * @returns The response from the server.
 	 */
-	async mutePlayer(player: string, duration: number, reason: string, moderator: string, ip?: boolean) {
+	async mutePlayer(player: string, duration: number, reason: string, moderator: string, ip: boolean) {
 		const res = await fetch(`${this._url}/api/v1/players/${player}/admin/mute`, {
 			method: 'POST',
 			headers: {

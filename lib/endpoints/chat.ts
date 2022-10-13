@@ -1,26 +1,28 @@
 /**
  * This is the Chat Class, it contains all the methods to handle the chat.
  * Those actions do not require any Query Role.
- * @class Authentification
+ * @class Chat
  * @link https://docs.freemmorpgmaker.com/en-US/api/v1/endpoints/chat.html
  * @author AriusII
  */
 export class Chat {
 	private _url: string
 	private _token: string
+	private defaultColor: any
 	constructor(_url: string, _token: string) {
 		this._url = _url
 		this._token = _token
+		this.defaultColor = { a: 255, r: 0, g: 0, b: 0 }
 	}
 	
 	/**
-	 * It sends a global message to the server
+	 * Sends a chat message to everyone currently logged into your game.
 	 * @param {string} message - The message you want to send.
-	 * @param [color] - { a: number, r: number, g: number, b: number }
-	 * @param {string} [target] - The target of the message.
-	 * @returns A promise.
+	 * @param {Array} - { a: number, r: number, g: number, b: number }, by default it's black.
+	 * @param {string} [target] - The target of the message. (Optional)
+	 * @returns - The response from the server.
 	 */
-	async globalMessage(message: string, color?: { a: number, r: number, g: number, b: number }, target?: string) {
+	async globalMessage(message: string, color: { a: number, r: number, g: number, b: number }, target: string) {
 		const res = await fetch(`${this._url}/api/v1/chat/global`, {
 			method: 'POST',
 			headers: {
@@ -29,23 +31,22 @@ export class Chat {
 			},
 			body: JSON.stringify({
 				message: message,
-				color: color,
-				target: target
+				color: color || this.defaultColor,
+				target: target || ''
 			})
 		})
 		return await res.json()
 	}
 
 	/**
-	 * It sends a message to all players within a certain radius of the selected map.
-	 * @param {string} mapid - The ID of the map you want to send the message to.
+	 * Sends a chat message to everyone in the proximity of a given map.
+	 * @param {string} map - The Map ID you want to send the message to.
 	 * @param {string} message - The message you want to send.
-	 * @param [color] - { a: number, r: number, g: number, b: number }
-	 * @param {string} [target] - The user to send the message to. If not specified, the message will be
-	 * sent to all users in the map.
-	 * @returns A promise.
+	 * @param {Array} - { a: number, r: number, g: number, b: number }, by default it's black.
+	 * @param {string} [target] - The target of the message. (Optional)
+	 * @returns - The response from the server.
 	 */
-	async proximityMessage(mapid: string, message: string, color?: { a: number, r: number, g: number, b: number }, target?: string) {
+	async proximityMessage(mapid: string, message: string, color: { a: number, r: number, g: number, b: number }, target: string) {
 		const res = await fetch(`${this._url}/api/v1/chat/proximity/${mapid}`, {
 			method: 'POST',
 			headers: {
@@ -54,22 +55,22 @@ export class Chat {
 			},
 			body: JSON.stringify({
 				message: message,
-				color: color,
-				target: target
+				color: color || this.defaultColor,
+				target: target || ''
 			})
 		})
 		return await res.json()
 	}
 
 	/**
-	 * It sends a direct message to a user
-	 * @param {string} user - The user you want to send the message to.
+	 * Sends a chat message to a specific player.
+	 * @param {string} player - The Account Name or Player Name you want to send the message to.
 	 * @param {string} message - The message you want to send.
-	 * @param [color] - { a: number, r: number, g: number, b: number }
-	 * @param {string} [target] - The user you want to send the message to.
-	 * @returns A promise.
+	 * @param {Array} - { a: number, r: number, g: number, b: number }, by default it's black.
+	 * @param {string} [target] - The target of the message. (Optional)
+	 * @returns - The response from the server.
 	 */
-	async directMessage(user: string, message: string, color?: { a: number, r: number, g: number, b: number }, target?: string) {
+	async directMessage(user: string, message: string, color: { a: number, r: number, g: number, b: number }, target: string) {
 		const res = await fetch(`${this._url}/api/v1/chat/direct/${user}`, {
 			method: 'POST',
 			headers: {
@@ -78,8 +79,8 @@ export class Chat {
 			},
 			body: JSON.stringify({
 				message: message,
-				color: color,
-				target: target
+				color: color || this.defaultColor,
+				target: target || ''
 			})
 		})
 		return await res.json()

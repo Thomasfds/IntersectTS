@@ -1,12 +1,10 @@
-/*
-	Endpoint: /logs
-	Description: logs endpoint
-	DOCUMENTATION URL: https://docs.freemmorpgmaker.com/en-US/api/v1/endpoints/logs.html
-	Author: AriusII
-	Language: typescript
-	Path: lib\endpoints\logs.ts
-    IE Require: None
-*/
+/**
+ * This is the Logs Class, it contains all the methods to handle the logs.
+ * Those actions do not require any Query Role.
+ * @class Logs
+ * @link https://docs.freemmorpgmaker.com/en-US/api/v1/endpoints/logs.html
+ * @author AriusII
+ */
 export class Logs {
 	private _url: string
 	private _token: string
@@ -15,6 +13,11 @@ export class Logs {
 		this._token = _token
 	}
 	
+	/**
+	 * Retrieve player activity
+	 * @param player - The player ID you want to retrieve the activity for.
+	 * @returns - The response from the server.
+	 */
 	async playerActivity(player: string) {
 		const res = await fetch(`${this._url}/api/v1/logs/player/${player}/activity`, {
 			method: 'GET',
@@ -26,6 +29,11 @@ export class Logs {
 		return await res.json()
 	}
 
+	/**
+	 * Retrieve user activity
+	 * @param user - The user ID you want to retrieve the activity for.
+	 * @returns - The response from the server.
+	 */
 	async userActivity(user: string) {
 		const res = await fetch(`${this._url}/api/v1/logs/user/${user}/activity`, {
 			method: 'GET',
@@ -37,6 +45,11 @@ export class Logs {
 		return await res.json()
 	}
 
+	/**
+	 * Retrieve user activity by ip
+	 * @param user - The user ID you want to retrieve the activity for.
+	 * @returns - The response from the server.
+	 */
 	async userActivityByIP(user: string) {
 		const res = await fetch(`${this._url}/api/v1/logs/user/${user}/ip`, {
 			method: 'GET',

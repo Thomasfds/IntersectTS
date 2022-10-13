@@ -1,12 +1,10 @@
-/*
-	Endpoint: /gameobjects
-	Description: gameobjects endpoint
-	DOCUMENTATION URL: https://docs.freemmorpgmaker.com/en-US/api/v1/endpoints/gameobjects.html
-	Author: AriusII
-	Language: typescript
-	Path: lib\endpoints\gameobjects.ts
-    IE Require: None
-*/
+/**
+ * This is the GameObjects Class, it contains all the methods to handle Game Object's.
+ * Those actions do not require any Query Role.
+ * @class Chat
+ * @link https://docs.freemmorpgmaker.com/en-US/api/v1/endpoints/gameobjects.html
+ * @author AriusII
+ */
 export class GameObjects {
 	private _url: string
 	private _token: string
@@ -16,13 +14,11 @@ export class GameObjects {
 	}
 	
 	/**
-	 * It takes a url, a token, a type, a page, and a count, and returns a fetch request with a GET
-	 * method, a content type of application/json, an authorization header of Bearer token, and a body of
-	 * a JSON stringified object with a page and count property.
-	 * @param {string} type - The type of game object you want to get.
-	 * @param {number} page - The page number to get.
-	 * @param {number} count - number of items to return
-	 * @returns A promise.
+	 * Grabs a list of game objects and their stored information from the server given it's type and paging information. 
+	 * @param type - The KEY type of object you want to get. (Check official doc'.)
+	 * @param page - The page you want to get.
+	 * @param count - The number of objects you want to get.
+	 * @returns - The response from the server.
 	 */
 	async getList(type: string, page: number, count: number) {
 		const res = await fetch(`${this._url}/api/v1/gameobjects/${type}`, {
@@ -32,19 +28,18 @@ export class GameObjects {
 				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
-				page: page,
-				count: count
+				page: page || 0,
+				count: count || 5
 			})
 		})
 		return await res.json()
 	}
 
 	/**
-	 * To return the correct Object Type please put a look on :
-	 * https://docs.freemmorpgmaker.com/en-US/api/v1/endpoints/gameobjects.html#object-types
-	 * @param {string} type - The type of object you want to get.
-	 * @param {string} id - the id of the object you want to get
-	 * @returns A Promise.
+	 * It retrieves the config for a singular game object from the server given it's type and id.
+	 * @param type - The KEY type of object you want to get. (Check official doc'.)
+	 * @param id - The id of the object you want to get.
+	 * @returns - The response from the server.
 	 */
 	async getObject(type: string, id: string) {
 		const res = await fetch(`${this._url}/api/v1/gameobjects/${type}/${id}`, {
@@ -58,8 +53,8 @@ export class GameObjects {
 	}
 
 	/**
-	 * It takes a url and a token, and returns a fetch request to the url with the token in the header.
-	 * @returns A promise.
+	 * It retrieves the servers timing configuration and color hues for each time of day.
+	 * @returns - The response from the server.
 	 */
 	async getTime() {
 		const res = await fetch(`${this._url}/api/v1/gameobjects/time`, {

@@ -42,7 +42,7 @@ IntersectTS is a Intersect Engine package built on top of [`Intersect Engine API
     const port = 5400;
 
     const token = await initToken(url, port, "username", "password");
-    /* password : Need to be passed as a UPPERCASE SHA256 of the password */
+    /* password : Need to be passed as a SHA256 of the password */
 
     const client = new Client(url, port, token.access_token, token.refresh_token);
     /* You can add a fifth parameter to the constructor to set the refresh interval in milliseconds. Default is 840000 ms */

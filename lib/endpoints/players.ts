@@ -1,12 +1,10 @@
-/*
-	Endpoint: /players
-	Description: players endpoint
-	DOCUMENTATION URL: https://docs.freemmorpgmaker.com/en-US/api/v1/endpoints/players.html
-	Author: AriusII
-	Language: typescript
-	Path: lib\endpoints\players.ts
-    IE Require: None
-*/
+/**
+ * This is the Players Class, it contains all the methods to handle the Players.
+ * Those actions do not require any Query Role.
+ * @class Players
+ * @link https://docs.freemmorpgmaker.com/en-US/api/v1/endpoints/players.html
+ * @author AriusII
+ */
 export class Players {
 	private _url: string
 	private _token: string
@@ -15,40 +13,29 @@ export class Players {
 		this._token = _token
 	}
 	
-	async playersList(page?: number, pageSize?: number, limit?: number) {
-		const res = await fetch(`${this._url}/api/v1/players`, {
+	async playersList(page: number, pageSize: number, limit: number) {
+		const res = await fetch(`${this._url}/api/v1/players?page=${page || 0}&pageSize=${pageSize || 5}&limit=${limit || (pageSize || 5)}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
-			},
-			body: JSON.stringify({
-				page: page,
-				pageSize: pageSize,
-				limit: limit
-			})
+			}
 		})
 		return await res.json()
 	}
 
-	async playerRank(page?: number, pageSize?: number, limit?: number, sort?: string) {
-		const res = await fetch(`${this._url}/api/v1/players/rank`, {
+	async playerRank(page: number, pageSize: number, limit: number, sort: string) {
+		const res = await fetch(`${this._url}/api/v1/players/rank?page=${page || 0}&pageSize=${pageSize || 5}&limit=${limit || (pageSize || 5)}&sortDirection=${sort || 'Descending'}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
-			},
-			body: JSON.stringify({
-				page: page,
-				pageSize: pageSize,
-				limit: limit,
-				sort: sort
-			})
+			}
 		})
 		return await res.json()
 }
 
-	async playersOnline(page?: number, count?: number) {
+	async playersOnline(page: number, count: number) {
 		const res = await fetch(`${this._url}/api/v1/players/online`, {
 			method: 'POST',
 			headers: {
@@ -56,8 +43,8 @@ export class Players {
 				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
-				page: page,
-				count: count
+				page: page || 0,
+				count: count || 5
 			})
 		})
 		return await res.json()
@@ -165,7 +152,7 @@ export class Players {
 		return await res.json()
 	}
 
-	async getPlayerBag(player: string, bag: string) {
+	async getPlayerBag(bag: string) {
 		const res = await fetch(`${this._url}/api/v1/players/bag/${bag}`, {
 			method: 'GET',
 			headers: {
@@ -176,7 +163,7 @@ export class Players {
 		return await res.json()
 	}
 
-	async givePlayerItem(player: string, item: string, amount: number, bankoverflow?: boolean) {
+	async givePlayerItem(player: string, item: string, amount: number, bankoverflow: boolean) {
 		const res = await fetch(`${this._url}/api/v1/players/${player}/items/give`, {
 			method: 'POST',
 			headers: {

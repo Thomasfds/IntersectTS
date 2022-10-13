@@ -1,13 +1,10 @@
-/*
-	Endpoint: /variables
-	Description: variables endpoint
-	DOCUMENTATION URL: https://docs.freemmorpgmaker.com/en-US/api/v1/endpoints/variables.html
-	Author: AriusII
-	Language: typescript
-	Path: lib\endpoints\variables.ts
-    IE Require: None
-*/
-
+/**
+ * This is the Variables Class, it contains all the methods to handle the Variables.
+ * Those actions do not require any Query Role.
+ * @class Variables
+ * @link https://docs.freemmorpgmaker.com/en-US/api/v1/endpoints/variables.html
+ * @author AriusII
+ */
 export class Variables {
 	private _url: string
 	private _token: string
@@ -16,6 +13,12 @@ export class Variables {
 		this._token = _token
 	}
 	
+	/**
+	 * Retrieves global variables from the server along with their ids and values.
+	 * @param page - The page number you want to retrieve.
+	 * @param count - The number of variables you want to retrieve.
+	 * @returns - The response from the server.
+	 */
 	async getVariables(page: number, count: number) {
 		const response = await fetch(`${this._url}/api/v1/variables/global`, {
 			method: 'POST',
@@ -24,13 +27,18 @@ export class Variables {
 				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
-				page: page,
-				count: count
+				page: page || 0,
+				count: count || 10
 			})
 		})
 		return await response.json()
 	}
 
+	/**
+	 * Retrieves a variable and it's value from the server by id.
+	 * @param variableid - The variable ID you want to retrieve the value for.
+	 * @returns - The response from the server.
+	 */
 	async getVariable(variableid: string) {
 		const res = await fetch(`${this._url}/api/v1/variables/global/${variableid}`, {
 			method: 'GET',
@@ -42,6 +50,12 @@ export class Variables {
 		return await res.json()
 	}
 
+	/**
+	 * Sets a specified variable's value given it's id.
+	 * @param variableid - The variable ID you want to set the value for.
+	 * @param value - The value you want to set the variable to.
+	 * @returns - The response from the server.
+	 */
 	async setVariableValue(variableid: string, value: number) {
 		const res = await fetch(`${this._url}/api/v1/variables/global/${variableid}`, {
 			method: 'POST',
@@ -56,6 +70,11 @@ export class Variables {
 		return await res.json()
 	}
 
+	/**
+	 * Retrieves the stored value of a variable from the server by id.
+	 * @param variableid - The variable ID you want to retrieve the value for.
+	 * @returns - The response from the server.
+	 */
 	async getVariableValue(variableid: string) {
 		const res = await fetch(`${this._url}/api/v1/variables/global/${variableid}/value`, {
 			method: 'GET',

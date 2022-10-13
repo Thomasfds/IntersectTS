@@ -1,12 +1,10 @@
-/*
-	Endpoint: /users
-	Description: users endpoint
-	DOCUMENTATION URL: https://docs.freemmorpgmaker.com/en-US/api/v1/endpoints/users.html
-	Author: AriusII
-	Language: typescript
-	Path: lib\endpoints\users.ts
-    IE Require: users.query API
-*/
+/**
+ * This is the Users Class, it contains all the methods to handle the Users.
+ * Those actions require the Query Role. -> users.query API
+ * @class Users
+ * @link https://docs.freemmorpgmaker.com/en-US/api/v1/endpoints/users.html
+ * @author AriusII
+ */
 export class Users {
 	private _url: string
 	private _token: string
@@ -15,33 +13,35 @@ export class Users {
 		this._token = _token
 	}
 	
-	usersList(page?: number, pageSize?: number, limit?: number) {
-		return fetch(`${this._url}/api/v1/users`, {
+	async usersList(page: number, pageSize: number, limit: number) {
+		const res = await fetch(`${this._url}/api/v1/users`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
-				page: page,
-				pageSize: pageSize,
-				limit: limit
+				page: page || 0,
+				pageSize: pageSize || 10,
+				limit: limit || (pageSize || 10)
 			})
 		})
+		return await res.json()
 	}
 
-	userLookup(user: string) {
-		return fetch(`${this._url}/api/v1/users/${user}`, {
+	async userLookup(user: string) {
+		const res = await fetch(`${this._url}/api/v1/users/${user}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
-	userRegister(user: string, password: string, email: string) {
-		return fetch(`${this._url}/api/v1/users/register`, {
+	async userRegister(user: string, password: string, email: string) {
+		const res = await fetch(`${this._url}/api/v1/users/register`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -53,10 +53,11 @@ export class Users {
 				email: email
 			})
 		})
+		return await res.json()
 	}
 
-	checkPassword(user: string, password: string) {
-		return fetch(`${this._url}/api/v1/users/${user}/password/validate`, {
+	async checkPassword(user: string, password: string) {
+		const res = await fetch(`${this._url}/api/v1/users/${user}/password/validate`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -66,10 +67,11 @@ export class Users {
 				password: password
 			})
 		})
+		return await res.json()
 	}
 
-	changeEmail(user: string, password: string, email: string) {
-		return fetch(`${this._url}/api/v1/users/${user}/email/change`, {
+	async changeEmail(user: string, password: string, email: string) {
+		const res = await fetch(`${this._url}/api/v1/users/${user}/email/change`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -80,10 +82,11 @@ export class Users {
 				authorization: password
 			})
 		})
+		return await res.json()
 	}
 
-	changePassword(user: string, password: string, newPassword: string) {
-		return fetch(`${this._url}/api/v1/users/${user}/password/change`, {
+	async changePassword(user: string, password: string, newPassword: string) {
+		const res = await fetch(`${this._url}/api/v1/users/${user}/password/change`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -94,36 +97,40 @@ export class Users {
 				authorization: password
 			})
 		})
+		return await res.json()
 	}
 
-	sendEmailResetPassword(user: string) {
-		return fetch(`${this._url}/api/v1/users/${user}/password/reset`, {
+	async sendEmailResetPassword(user: string) {
+		const res = await fetch(`${this._url}/api/v1/users/${user}/password/reset`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
-	getCharacters(user: string) {
-		return fetch(`${this._url}/api/v1/users/${user}/players`, {
+	async getCharacters(user: string) {
+		const res = await fetch(`${this._url}/api/v1/users/${user}/players`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 
-	getCharacter(user: string, character: string) {
-		return fetch(`${this._url}/api/v1/users/${user}/players/${character}`, {
+	async getCharacter(user: string, character: string) {
+		const res = await fetch(`${this._url}/api/v1/users/${user}/players/${character}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+		return await res.json()
 	}
 	/**
 	 * Need the Users.Manage Role
@@ -131,8 +138,8 @@ export class Users {
 	 * @param email 
  	 * @returns 
  	*/
-	sudoChangeEmail(user: string, email: string) {
-		return fetch(`${this._url}/api/v1/users/${user}/manage/email/change`, {
+	async sudoChangeEmail(user: string, email: string) {
+		const res = await fetch(`${this._url}/api/v1/users/${user}/manage/email/change`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -142,6 +149,7 @@ export class Users {
 				new: email
 			})
 		})
+		return await res.json()
 	}
 
 	/**
@@ -150,8 +158,8 @@ export class Users {
 	 * @param password 
 	 * @returns 
 	*/
-	sudoChangePassword(user: string, password: string) {
-		return fetch(`${this._url}/api/v1/users/${user}/manage/password/change`, {
+	async sudoChangePassword(user: string, password: string) {
+		const res = await fetch(`${this._url}/api/v1/users/${user}/manage/password/change`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -161,5 +169,6 @@ export class Users {
 				new: password
 			})
 		})
+		return await res.json()
 	}
 }
