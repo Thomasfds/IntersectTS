@@ -53,7 +53,7 @@ IntersectTS is a Intersect Engine package built on top of [`Intersect Engine API
 
 Before creating an issue, please ensure that it hasn't already been reported/suggested, and double-check the documentation.
 
-See the contribution guide if you'd like to submit a PR.
+If you'd like, feel free to submit a PR.
 
 
 ## Help
