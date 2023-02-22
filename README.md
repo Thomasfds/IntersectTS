@@ -30,7 +30,7 @@ IntersectTS is a Intersect Engine package built on top of [`Intersect Engine API
 [`@ariusii/intersect.ts`](https://www.npmjs.com/package/@ariusii/intersect.ts) doesn't require any dependencies.
 
 ```bash
-    npm install @ariusii/intersect.ts
+    npm i @xfallseane/intersect.ts
 ```
 
 ---

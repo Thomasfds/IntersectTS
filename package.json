@@ -1,27 +1,35 @@
 {
-	"name": "@ariusii/intersect.ts",
-	"version": "1.1.2",
-	"description": "The Intersect Engine API Client Library based on TS.",
-	"main": "dist/client.js",
-	"types": "dist/client.d.ts",
-	"type": "module",
-	"scripts": {
-		"build": "tsc --build --clean && tsc --build",
-		"start": "node index.js"
-	},
-	"keywords": [
-		"Intersect",
-		"Engine",
-		"API",
-		"Client",
-		"Library",
-		"JS",
-		"NodeJS",
-		"TS"
-	],
-	"author": "AriusII",
-	"license": "MIT",
-	"directories": {
-		"lib": "lib"
-	}
+  "name": "@xfallseane/intersect.ts",
+  "version": "1.1.2",
+  "description": "The Intersect Engine API Client Library based on TS.",
+  "main": "dist/client.js",
+  "types": "dist/client.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc --build --clean && tsc --build",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "Intersect",
+    "Engine",
+    "API",
+    "Client",
+    "Library",
+    "JS",
+    "NodeJS",
+    "TS"
+  ],
+  "author": "AriusII",
+  "license": "MIT",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thomasfds/IntersectTS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Thomasfds/IntersectTS/issues"
+  },
+  "homepage": "https://github.com/Thomasfds/IntersectTS#readme"
 }
