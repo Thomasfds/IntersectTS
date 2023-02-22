@@ -9,6 +9,8 @@
 
 IntersectTS is a Intersect Engine package built on top of [`Intersect Engine API`](https://docs.freemmorpgmaker.com/en-US/api/v1/) to render more easily the API usage.
 
+This package is an upgrade version from ["Thomasfds Apps"](https://github.com/Thomasfds/IntersectTS)
+
 <div align="center" style="padding-top: 2rem; padding-bottom: 1rem">
 
 | [**Click here for the documentation and guides(todo)**](TODO) |
@@ -27,7 +29,7 @@ IntersectTS is a Intersect Engine package built on top of [`Intersect Engine API
 
 ## Installation
 
-[`@ariusii/intersect.ts`](https://www.npmjs.com/package/@ariusii/intersect.ts) doesn't require any dependencies.
+[`@xfallseane/intersect.ts`](https://www.npmjs.com/package/@xfallseane/intersect.ts) doesn't require any dependencies.
 
 ```bash
     npm i @xfallseane/intersect.ts
