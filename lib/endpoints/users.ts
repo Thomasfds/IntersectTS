@@ -32,6 +32,15 @@ export class Users {
 				'Authorization': `Bearer ${this._token}`
 			}
 		})
+
+		 // Si l'utilisateur n'existe pas (error 404)
+		 if (res.status === 404) {
+            return {
+                "Success": true,
+                "Message": "No user with name '" + user + "'."
+            }
+        }
+		
 		return await res.json()
 	}
 
@@ -43,7 +52,7 @@ export class Users {
 				'Authorization': `Bearer ${this._token}`
 			},
 			body: JSON.stringify({
-				user: user,
+				username: user,
 				password: password,
 				email: email
 			})
